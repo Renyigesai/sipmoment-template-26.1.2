@@ -1,25 +1,6 @@
 
-Installation information
-=======
-
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
-
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+## License
+### 1. 代码(Code)
+本模组所有位于`src/main/java` 目录下的源代码，基于 [**BSD 3-Clause License**](https://github.com/Renyigesai/bakery/blob/master/LICENSE-CODE.txt) 开源。
+### 2. 资源文件(Assets)
+其它所有非代码资源文件（位于`src/main/resources`目录下的文件），均采用[**CC BY-NC-SA 4.0**](https://github.com/Renyigesai/bakery/blob/master/LICENSE-ASSETS.txt) 进行许可。
