@@ -1,6 +1,7 @@
 package com.renyigesai.sip_moment.common.init;
 
 import com.renyigesai.sip_moment.SipMomentMod;
+import com.renyigesai.sip_moment.common.blocks.CupBlock;
 import com.renyigesai.sip_moment.common.blocks.WineBlock;
 import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlock;
 import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlockEntity;
@@ -23,10 +24,12 @@ public class SMBlocks {
     public static final DeferredBlock<MixBlock> MIX_BLOCK;
     public static final DeferredBlock<Block> HIGHBALL;
     public static final DeferredBlock<Block> KYOHO_WINE;
+    public static final DeferredBlock<Block> KYOHO_WINE_CUP;
     public static final DeferredBlock<Block> BUTTER_BEER;
     public static final DeferredBlock<Block> BLACK_STAR_COFFEE;
     public static final DeferredBlock<Block> WHISKY;
     public static final DeferredBlock<Block> DAVID_MARTINEZ;
+    public static final DeferredBlock<Block> GOBLET;
 
     static {
         MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
@@ -35,12 +38,17 @@ public class SMBlocks {
 
         KYOHO_WINE = wineBlock("kyoho_wine",2);
 
+        KYOHO_WINE_CUP = wineBlock("kyoho_wine_cup",4);
+
         BUTTER_BEER = wineBlock("butter_beer",4);
 
         BLACK_STAR_COFFEE = wineBlock("black_star_coffee",2);
 
         WHISKY = wineBlock("whisky",4);
+
         DAVID_MARTINEZ = wineBlock("david_martinez",4);
+
+        GOBLET = BLOCKS.register("goblet",()-> new CupBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(modBlockId("goblet")),4));
     }
 
     private static DeferredBlock<Block> wineBlock(String name,int maxPile){

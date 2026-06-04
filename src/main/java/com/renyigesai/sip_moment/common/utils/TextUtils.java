@@ -54,7 +54,7 @@ public class TextUtils {
                     mutableComponent = Component.translatable(instance.getDescriptionId());
                     effect = (MobEffect)instance.getEffect().value();
                     effect.createModifiers(instance.getAmplifier(), (attributeHolder, attributeModifier) -> {
-                        attributeList.add(new Pair(attributeHolder, attributeModifier));
+                        attributeList.add(new Pair<>(attributeHolder, attributeModifier));
                     });
                     if (instance.getAmplifier() > 0) {
                         mutableComponent = Component.translatable("potion.withAmplifier", new Object[]{mutableComponent, Component.translatable("potion.potency." + instance.getAmplifier())});

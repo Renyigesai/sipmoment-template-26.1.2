@@ -1,0 +1,8 @@
+{
+  "block.generic.pouring_wine": {
+    "subtitle":"block.generic.pouring_wine",
+    "sounds": [
+      "sip_moment:pouring_wine"
+    ]
+  }
+}

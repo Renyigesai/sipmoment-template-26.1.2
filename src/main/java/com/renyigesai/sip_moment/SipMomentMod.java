@@ -1,7 +1,6 @@
 package com.renyigesai.sip_moment;
 
-import com.renyigesai.sip_moment.common.init.SMBlocks;
-import com.renyigesai.sip_moment.common.init.SMItems;
+import com.renyigesai.sip_moment.common.init.*;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -22,7 +21,13 @@ public class SipMomentMod {
     public SipMomentMod(IEventBus modEventBus) {
         SMBlocks.BLOCKS.register(modEventBus);
         SMBlocks.Entitys.REGISTER.register(modEventBus);
+        SMDataComponents.DATA_COMPONENT_TYPE.register(modEventBus);
         SMItems.ITEMS.register(modEventBus);
+        SMCreativeModeTabs.REGISTER.register(modEventBus);
+        SMEntityTypes.ENTITY.register(modEventBus);
+        SMMobEffects.EFFECTS.register(modEventBus);
+        SMParticleTypes.PARTICLE_TYPE.register(modEventBus);
+        SMSounds.REGISTRY.register(modEventBus);
 //        modEventBus.addListener(this::commonSetup);
     }
 

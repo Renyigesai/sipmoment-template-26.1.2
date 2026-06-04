@@ -5,6 +5,12 @@
   "block.sip_moment.black_star_coffee": "Black Star Coffee",
   "block.sip_moment.david_martinez": "David Martinez",
   "block.sip_moment.kyoho_wine": "Kyoho Wine",
+  "block.sip_moment.kyoho_wine_cup": "Cup Of Kyoho Wine",
   "block.sip_moment.highball": "HighBall",
-  "item.sip_moment.example_item": "Example Item"
+  "block.sip_moment.goblet": "Goblet",
+  "item.sip_moment.example_item": "Example Item",
+  "item_group.sip_moment.main_tab": "Sip Moment",
+  "tooltips.sip_moment.repeat_eat_item_drink": "Drink",
+  "tooltips.sip_moment.pile_item_place": "Place",
+  "effect.sip_moment.drunk": "Drunk"
 }

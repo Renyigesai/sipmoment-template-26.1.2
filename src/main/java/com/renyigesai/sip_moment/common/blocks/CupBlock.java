@@ -12,13 +12,13 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WineBlock extends AbstractPileBlock {
+public class CupBlock extends AbstractPileBlock{
 
     public static final IntegerProperty PILE;
     public static final VoxelShape BOX = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 4.0D, 15.0D);
     public final int maxPile;
 
-    public WineBlock(Properties properties,int maxPile) {
+    public CupBlock(Properties properties,int maxPile) {
         super(properties);
         this.maxPile = maxPile;
     }

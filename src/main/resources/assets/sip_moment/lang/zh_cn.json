@@ -5,6 +5,12 @@
   "block.sip_moment.black_star_coffee": "黑星咖啡",
   "block.sip_moment.david_martinez": "大卫马丁内斯",
   "block.sip_moment.kyoho_wine": "巨峰葡萄酒",
+  "block.sip_moment.kyoho_wine_cup": "杯装巨峰葡萄酒",
   "block.sip_moment.highball": "HighBall",
-  "item.sip_moment.example_item": "Example Item"
+  "block.sip_moment.goblet": "红酒杯",
+  "item.sip_moment.example_item": "Example Item",
+  "item_group.sip_moment.main_tab": "小酌一刻",
+  "tooltips.sip_moment.repeat_eat_item_drink": "喝",
+  "tooltips.sip_moment.pile_item_place": "可放置",
+  "effect.sip_moment.drunk": "酒劲"
 }

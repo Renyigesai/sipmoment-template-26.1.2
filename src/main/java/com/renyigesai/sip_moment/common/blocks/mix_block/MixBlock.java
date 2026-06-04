@@ -1,7 +1,7 @@
 package com.renyigesai.sip_moment.common.blocks.mix_block;
 
 import com.mojang.serialization.MapCodec;
-import com.renyigesai.sip_moment.common.blocks.AbstractWineBlock;
+import com.renyigesai.sip_moment.common.blocks.AbstractPileBlock;
 import com.renyigesai.sip_moment.common.utils.ItemUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -126,7 +126,7 @@ public class MixBlock extends BaseEntityBlock {
             pLevel.removeBlock(pPos,false);
         }
         SoundEvent soundEvent;
-        if (outStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractWineBlock pileBlock){
+        if (outStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractPileBlock pileBlock){
             soundEvent = pileBlock.getTakeSound();
         }else {
             soundEvent = SoundEvents.ITEM_FRAME_REMOVE_ITEM;

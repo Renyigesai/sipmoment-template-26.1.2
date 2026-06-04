@@ -2,7 +2,9 @@
   "required": true,
   "package": "com.renyigesai.sip_moment.common.mixin",
   "compatibilityLevel": "JAVA_25",
-  "mixins": [],
+  "mixins": [
+    "ConsumableMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },

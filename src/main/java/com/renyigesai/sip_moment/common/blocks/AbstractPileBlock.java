@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,10 +20,10 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 
-public abstract class AbstractWineBlock extends Block {
+public abstract class AbstractPileBlock extends Block {
 
     public static final EnumProperty<Direction> FACING;
-    public AbstractWineBlock (Properties properties) {
+    public AbstractPileBlock(Properties properties) {
         super(properties);
     }
 
@@ -30,15 +31,26 @@ public abstract class AbstractWineBlock extends Block {
 
     public abstract int getMaxPile();
 
+//    @Override
+//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+//        if (level.isClientSide()){
+//            return InteractionResult.SUCCESS;
+//        }
+//        if (!player.isShiftKeyDown() && player){
+//            return take(state, level, pos, player);
+//        }
+//        return super.useWithoutItem(state, level, pos, player, hitResult);
+//    }
+
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.isClientSide()){
             return InteractionResult.SUCCESS;
         }
-        if (!player.isShiftKeyDown()){
+        if (!player.isShiftKeyDown() && player.getItemInHand(hand).isEmpty()){
             return take(state, level, pos, player);
         }
-        return super.useWithoutItem(state, level, pos, player, hitResult);
+        return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
     }
 
     public InteractionResult take(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer){

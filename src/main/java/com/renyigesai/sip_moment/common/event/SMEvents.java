@@ -1,6 +1,6 @@
 package com.renyigesai.sip_moment.common.event;
 
-import com.renyigesai.sip_moment.common.items.WineItem;
+import com.renyigesai.sip_moment.common.items.PileItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +25,7 @@ public class SMEvents {
         if (!player.isShiftKeyDown()){
             return;
         }
-        if (!(handItem.getItem() instanceof WineItem pileItem)){
+        if (!(handItem.getItem() instanceof PileItem pileItem)){
             return;
         }
         event.setCanceled(true);

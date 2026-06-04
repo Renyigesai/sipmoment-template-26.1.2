@@ -5,9 +5,9 @@
 	},
 	"elements": [
 		{
-			"from": [6.5, 11.4, 6.5],
-			"to": [8.5, 16.4, 8.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 11.25, 6.5]},
+			"from": [6.5, 11.15, 6.5],
+			"to": [8.5, 16.15, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 11, 6.5]},
 			"faces": {
 				"north": {"uv": [8, 11, 9, 13.5], "texture": "#0"},
 				"east": {"uv": [9, 11, 10, 13.5], "texture": "#0"},
@@ -17,9 +17,9 @@
 			}
 		},
 		{
-			"from": [5.5, 0.25, 5.5],
-			"to": [9.5, 10.25, 9.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0.25, 5.5]},
+			"from": [5.5, 0, 5.5],
+			"to": [9.5, 10, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0, 5.5]},
 			"faces": {
 				"north": {"uv": [0, 0.5, 2, 5.5], "texture": "#0"},
 				"east": {"uv": [0, 0.5, 2, 5.5], "texture": "#0"},
@@ -30,9 +30,9 @@
 			}
 		},
 		{
-			"from": [5.35, 0.1, 5.35],
-			"to": [9.65, 11.4, 9.65],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0.25, 5.5]},
+			"from": [5.35, -0.15, 5.35],
+			"to": [9.65, 11.15, 9.65],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0, 5.5]},
 			"faces": {
 				"north": {"uv": [2, 5.5, 4, 11], "texture": "#0"},
 				"east": {"uv": [2, 0, 4, 5.5], "texture": "#0"},
@@ -44,9 +44,9 @@
 		},
 		{
 			"name": "cube_outline",
-			"from": [9.65, 11.4, 9.65],
-			"to": [5.35, 0.1, 5.35],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0.25, 5.5]},
+			"from": [9.65, 11.15, 9.65],
+			"to": [5.35, -0.15, 5.35],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0, 5.5]},
 			"faces": {
 				"north": {"uv": [8, 0, 10, 5.5], "texture": "#0"},
 				"east": {"uv": [8, 0, 10, 5.5], "texture": "#0"},
@@ -58,9 +58,9 @@
 		},
 		{
 			"name": "cube_outline",
-			"from": [9.65, 11.4, 9.65],
-			"to": [5.35, 0.1, 5.35],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0.25, 5.5]},
+			"from": [9.65, 11.15, 9.65],
+			"to": [5.35, -0.15, 5.35],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0, 5.5]},
 			"faces": {
 				"north": {"uv": [8, 0, 10, 5.5], "texture": "#0"},
 				"east": {"uv": [8, 0, 10, 5.5], "texture": "#0"},
@@ -72,9 +72,9 @@
 		},
 		{
 			"name": "cube_outline",
-			"from": [9.8, 11.55, 9.8],
-			"to": [5.2, -0.05, 5.2],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0.25, 5.5]},
+			"from": [9.8, 11.3, 9.8],
+			"to": [5.2, -0.3, 5.2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0, 5.5]},
 			"faces": {
 				"north": {"uv": [12, 4, 14, 9], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [12, 4, 14, 9], "rotation": 180, "texture": "#0"},
@@ -86,9 +86,9 @@
 		},
 		{
 			"name": "cube_outline",
-			"from": [8.6, 16.5, 8.6],
-			"to": [6.4, 11.3, 6.4],
-			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 11.25, 6.5]},
+			"from": [8.6, 16.25, 8.6],
+			"to": [6.4, 11.05, 6.4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 11, 6.5]},
 			"faces": {
 				"north": {"uv": [12, 4, 13, 6.5], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [12, 4, 13, 6.5], "rotation": 180, "texture": "#0"},
@@ -100,33 +100,32 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [75, 45, 0],
-			"translation": [0, 2.5, 0],
-			"scale": [0.375, 0.375, 0.375]
+			"rotation": [45, 0, -90],
+			"translation": [6.75, -1.25, 0]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [75, 45, 0],
-			"translation": [0, 2.5, 0],
-			"scale": [0.375, 0.375, 0.375]
+			"rotation": [45, 0, -90],
+			"translation": [6.75, -1.25, 0]
 		},
 		"firstperson_righthand": {
 			"rotation": [0, 45, 0],
-			"scale": [0.4, 0.4, 0.4]
+			"translation": [0, 7.5, 0]
 		},
 		"firstperson_lefthand": {
-			"rotation": [0, -135, 0],
-			"scale": [0.4, 0.4, 0.4]
+			"rotation": [0, 45, 0],
+			"translation": [0, 7.5, 0]
 		},
 		"ground": {
-			"translation": [0, 3, 0],
-			"scale": [0.25, 0.25, 0.25]
+			"translation": [0.25, 3.5, 1]
 		},
 		"gui": {
-			"rotation": [30, -135, 0],
-			"translation": [0, 1, 0]
+			"rotation": [45, -135, 0],
+			"translation": [0, 8.25, 0],
+			"scale": [2, 2, 2]
 		},
 		"fixed": {
-			"scale": [0.5, 0.5, 0.5]
+			"translation": [-0.25, 12, 1],
+			"scale": [2, 2, 2]
 		}
 	},
 	"groups": [
