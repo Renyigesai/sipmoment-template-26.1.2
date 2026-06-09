@@ -119,7 +119,10 @@ public class PouringWineEntity extends Entity implements IEntityWithComplexSpawn
         LivingEntity owner = getOwner();
         if (owner != null){
             if (owner instanceof Player player && !player.hasInfiniteMaterials()){
-                ItemUtils.givePlayerItem(player,getWineStack().copy());
+                if (getWineStack().getItem() instanceof BottledWineItem bottledWineItem){
+                    ItemStack newWine = bottledWineItem.onPouringWine(getWineStack()).copy();
+                    ItemUtils.givePlayerItem(player,newWine);
+                }
             }else {
 
             }

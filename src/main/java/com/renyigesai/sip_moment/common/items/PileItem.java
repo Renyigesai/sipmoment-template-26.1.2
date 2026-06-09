@@ -1,10 +1,9 @@
 package com.renyigesai.sip_moment.common.items;
 
 import com.renyigesai.sip_moment.common.blocks.AbstractPileBlock;
-import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlock;
-import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlockEntity;
+import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlock;
+import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlockEntity;
 import com.renyigesai.sip_moment.common.init.SMBlocks;
-import com.renyigesai.sip_moment.common.init.SMDataComponents;
 import com.renyigesai.sip_moment.common.utils.TextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -15,10 +14,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -77,7 +74,7 @@ public class PileItem extends BlockItem {
         BlockPos pos = pContext.getClickedPos();
         BlockState state = level.getBlockState(pos);
         if (player.isShiftKeyDown() && this.isExtra(pContext)) {
-            if (state.is(SMBlocks.MIX_BLOCK.get())) {
+            if (state.is(SMBlocks.BEVERAGE_DISPLAY_BLOCK.get())) {
                 addMixBlock(level, pos, thisBlock, player, pContext);
                 return InteractionResult.SUCCESS;
             }
@@ -111,7 +108,7 @@ public class PileItem extends BlockItem {
 
     public InteractionResult addMixBlock(Level level,BlockPos pos,Block thisBlock,Player player,UseOnContext pContext){
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof MixBlockEntity mix){
+        if (blockEntity instanceof BeverageDisplayBlockEntity mix){
             boolean flag = mix.addItem(new ItemStack(thisBlock.asItem()));
             if (flag){
                 if (!player.getAbilities().instabuild) {
@@ -129,8 +126,8 @@ public class PileItem extends BlockItem {
     private void fillMixBlock(BlockState state, Block block, Level level, BlockPos pos) {
         AbstractPileBlock pileBlock = (AbstractPileBlock) state.getBlock();
         int integerProperty = state.getValue(pileBlock.getPileProperty());
-        level.setBlock(pos, SMBlocks.MIX_BLOCK.get().defaultBlockState().setValue(MixBlock.FACING, state.getValue(AbstractPileBlock.FACING)), 3);
-        MixBlockEntity mix = (MixBlockEntity) level.getBlockEntity(pos);
+        level.setBlock(pos, SMBlocks.BEVERAGE_DISPLAY_BLOCK.get().defaultBlockState().setValue(BeverageDisplayBlock.FACING, state.getValue(AbstractPileBlock.FACING)), 3);
+        BeverageDisplayBlockEntity mix = (BeverageDisplayBlockEntity) level.getBlockEntity(pos);
         if (mix == null){
             return;
         }

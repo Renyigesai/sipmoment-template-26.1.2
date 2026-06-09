@@ -10,12 +10,29 @@ import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
 public class SMConsumables {
     public static final Consumable HIGHBALL;
+    public static final Consumable DAVID_MARTINEZ;
+    public static final Consumable BUTTER_BEER;
+    public static final Consumable ORANGE_JUICE;
 
     static {
 
         HIGHBALL = Consumables.defaultFood()
                 .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
-                /*.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(SMMobEffects.DRUNK,600)))*/
+                .hasConsumeParticles(false)
+                .build();
+
+        DAVID_MARTINEZ = defaultEffectFood(new MobEffectInstance(SMMobEffects.EDGERUNNERS,6000))
+                .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
+                .hasConsumeParticles(false)
+                .build();
+
+        BUTTER_BEER = defaultEffectFood(new MobEffectInstance(MobEffects.REGENERATION,300,2))
+                .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
+                .hasConsumeParticles(false)
+                .build();
+
+        ORANGE_JUICE = defaultEffectFood(new MobEffectInstance(SMMobEffects.SINCERELY_FOR_YOU,1200))
+                .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
                 .hasConsumeParticles(false)
                 .build();
     }

@@ -8,25 +8,11 @@
       "model": "sip_moment:block/kyoho_wine_2",
       "y": 90
     },
-    "facing=east,pile=3": {
-      "model": "sip_moment:block/kyoho_wine_3",
-      "y": 90
-    },
-    "facing=east,pile=4": {
-      "model": "sip_moment:block/kyoho_wine_4",
-      "y": 90
-    },
     "facing=north,pile=1": {
       "model": "sip_moment:block/kyoho_wine_1"
     },
     "facing=north,pile=2": {
       "model": "sip_moment:block/kyoho_wine_2"
-    },
-    "facing=north,pile=3": {
-      "model": "sip_moment:block/kyoho_wine_3"
-    },
-    "facing=north,pile=4": {
-      "model": "sip_moment:block/kyoho_wine_4"
     },
     "facing=south,pile=1": {
       "model": "sip_moment:block/kyoho_wine_1",
@@ -50,14 +36,6 @@
     },
     "facing=west,pile=2": {
       "model": "sip_moment:block/kyoho_wine_2",
-      "y": 270
-    },
-    "facing=west,pile=3": {
-      "model": "sip_moment:block/kyoho_wine_3",
-      "y": 270
-    },
-    "facing=west,pile=4": {
-      "model": "sip_moment:block/kyoho_wine_4",
       "y": 270
     }
   }

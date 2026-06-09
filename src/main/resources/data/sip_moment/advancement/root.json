@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "count": 1,
+      "id": "sip_moment:whisky"
+    },
+    "title": {
+      "translate": "advancements.sip_moment.root.title"
+    },
+    "description": {
+      "translate": "advancements.sip_moment.root.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "root": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

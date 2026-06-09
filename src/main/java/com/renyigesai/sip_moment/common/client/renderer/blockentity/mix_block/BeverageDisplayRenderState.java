@@ -3,10 +3,10 @@ import com.renyigesai.sip_moment.common.client.renderer.blockentity.BlockEntityR
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.core.Direction;
 
-public class MixBlockRenderState extends BlockEntityRenderItemState {
+public class BeverageDisplayRenderState extends BlockEntityRenderItemState {
     public Direction facing;
     public Boolean tray;
-    public MixBlockRenderState(int count) {
+    public BeverageDisplayRenderState(int count) {
         super(count);
         facing = Direction.DOWN;
     }

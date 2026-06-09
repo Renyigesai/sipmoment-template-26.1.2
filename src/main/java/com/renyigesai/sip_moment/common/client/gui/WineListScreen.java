@@ -1,0 +1,94 @@
+package com.renyigesai.sip_moment.common.client.gui;
+
+import com.renyigesai.sip_moment.SipMomentMod;
+import com.renyigesai.sip_moment.common.data.WineListCatalog;
+import com.renyigesai.sip_moment.common.network.SyncGivesPayload;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+
+import java.awt.*;
+
+@SuppressWarnings("removal")
+public class WineListScreen extends AbstractContainerScreen<WineListMenu> {
+    public final Player player;
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "textures/gui/wine_list.png");
+    private static final int[] LINE = new int[]{59,91,123,155};
+    private static final int BUTTON_WIDTH = 16;
+    private static final int BUTTON_HEIGHT = 16;
+    private static final int BUTTON_X_OFFSET = 136;
+    private final Font font;
+    private int lastPage = -1;
+    private final java.util.Map<Integer, Rectangle> buttonBounds = new java.util.HashMap<>();
+    public WineListScreen(WineListMenu p_97741_, Inventory p_97742_, Component p_97743_) {
+        super(p_97741_, p_97742_, p_97743_);
+        this.player = p_97742_.player;
+        this.font = Minecraft.getInstance().font;
+        this.titleLabelY += 16;
+        this.titleLabelX -= (width - 139) / 2;
+    }
+
+    @Override
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+        super.extractBackground(graphics, mouseX, mouseY, a);
+        int x = (width - 139) / 2;
+        int y = (height - 187) / 2;
+        graphics.blit(RenderPipelines.GUI_TEXTURED,TEXTURE, x, y, 0, 0, 139, 187,256,256);
+        int page = menu.getPage();
+        int start = page * menu.itemsPerPage;
+        int end = Math.min(start + menu.itemsPerPage, WineListCatalog.getWineList().size());
+        for (int i = start, row = 0; i < end; i++, row++) {
+            graphics.blit(RenderPipelines.GUI_TEXTURED,TEXTURE,x + 117,y + LINE[row],0,187,10,10,256,256);
+        }
+    }
+
+
+    @Override
+    public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        if (event.button() == 0) {
+            int guiX = (width - 139) / 2;
+            int guiY = (height - 187) / 2;
+            int page = menu.getPage();
+            int start = page * menu.itemsPerPage;
+            int end = Math.min(start + menu.itemsPerPage, WineListCatalog.getWineList().size());
+            double mouseX = event.x();
+            double mouseY = event.y();
+
+            for (int i = start, row = 0; i < end; i++, row++) {
+                int buttonX = guiX + 117;
+                int buttonY = guiY + LINE[row];
+                int buttonWidth = 10;
+                int buttonHeight = 10;
+                if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+                    ClientPacketDistributor.sendToServer(new SyncGivesPayload(i));
+                    return true;
+                }
+            }
+        }
+        return super.mouseClicked(event, doubleClick);
+    }
+
+    @Override
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double scrollX, double scrollY) {
+        int x = this.leftPos;
+        int y = this.topPos;
+        if (pMouseX >= x && pMouseX <= x + 104 && pMouseY >= y + 26 && pMouseY <= y + 195){
+            boolean flag = scrollY > 0;
+            int page = flag ? -1 : 1;
+            int newWineListPage = Math.max(menu.getPage() + page, 0);
+            menu.rebuildSlots(newWineListPage);
+            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.NOTE_BLOCK_HAT, 2.0F));
+        }
+        return super.mouseScrolled(x, y, scrollX, scrollY);
+    }
+}

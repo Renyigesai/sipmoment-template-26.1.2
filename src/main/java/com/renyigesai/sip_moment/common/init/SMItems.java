@@ -1,17 +1,16 @@
 package com.renyigesai.sip_moment.common.init;
 
 import com.renyigesai.sip_moment.SipMomentMod;
-import com.renyigesai.sip_moment.common.items.BottledWineItem;
-import com.renyigesai.sip_moment.common.items.PileItem;
-import com.renyigesai.sip_moment.common.items.WineItem;
+import com.renyigesai.sip_moment.common.items.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -20,7 +19,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class SMItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SipMomentMod.MODID);
 
-    public static final FoodProperties COMMON_WINE = new FoodProperties.Builder().alwaysEdible().build();
+    public static final FoodProperties COMMON_WINE_FOOD = new FoodProperties.Builder().alwaysEdible().build();
+    public static final Consumable COMMON_WINE_CONSUMABLE = Consumable.builder().consumeSeconds(1.6F).animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK).hasConsumeParticles(false).build();
 
     public static final DeferredItem<Item> HIGHBALL;
     public static final DeferredItem<Item> KYOHO_WINE;
@@ -29,28 +29,53 @@ public class SMItems {
     public static final DeferredItem<Item> BLACK_STAR_COFFEE;
     public static final DeferredItem<Item> WHISKY;
     public static final DeferredItem<Item> DAVID_MARTINEZ;
+    public static final DeferredItem<Item> CHAMPAGNE;
+    public static final DeferredItem<Item> CHAMPAGNE_CUP;
+    public static final DeferredItem<Item> ORANGE_JUICE ;
     public static final DeferredItem<Item> GOBLET;
+    public static final DeferredItem<Item> CHAMPAGNE_GLASS;
+    public static final DeferredItem<Item> BAR_TABLE;
 
 
     static {
-        HIGHBALL = wineItem(SMBlocks.HIGHBALL, 6,SMConsumables.HIGHBALL);
-        KYOHO_WINE = ITEMS.register("kyoho_wine",()-> new BottledWineItem(SMBlocks.KYOHO_WINE.get(),new Item.Properties().setId(modItemId("kyoho_wine")).useBlockDescriptionPrefix(),SMItems.GOBLET,SMItems.KYOHO_WINE_CUP,16733525,0.0f));
-        KYOHO_WINE_CUP = wineItem(SMBlocks.KYOHO_WINE_CUP,4);
-        BUTTER_BEER = wineItem(SMBlocks.BUTTER_BEER,6);
-        BLACK_STAR_COFFEE = wineItem(SMBlocks.BLACK_STAR_COFFEE,4);
-        WHISKY = wineItem(SMBlocks.WHISKY,4);
-        DAVID_MARTINEZ = wineItem(SMBlocks.DAVID_MARTINEZ,4);
+        HIGHBALL = wineItem(SMBlocks.HIGHBALL, 6,SMConsumables.HIGHBALL,true);
+        KYOHO_WINE = ITEMS.register("kyoho_wine",()-> new BottledWineItem(SMBlocks.KYOHO_WINE.get(),new Item.Properties().setId(modItemId("kyoho_wine")).useBlockDescriptionPrefix(),SMItems.GOBLET,SMItems.KYOHO_WINE_CUP,6,16733525,0.0f));
+        KYOHO_WINE_CUP = wineItem(SMBlocks.KYOHO_WINE_CUP,4,false);
+        BUTTER_BEER = drinkItem(SMBlocks.BUTTER_BEER,6,SMConsumables.BUTTER_BEER,true);
+        BLACK_STAR_COFFEE = drinkItem(SMBlocks.BLACK_STAR_COFFEE,4,true);
+        WHISKY = wineItem(SMBlocks.WHISKY,4,false);
+        DAVID_MARTINEZ = wineItem(SMBlocks.DAVID_MARTINEZ,4,SMConsumables.DAVID_MARTINEZ,true);
+        CHAMPAGNE = ITEMS.register("champagne",()-> new BottledWineItem(SMBlocks.CHAMPAGNE.get(),new Item.Properties().setId(modItemId("champagne")).useBlockDescriptionPrefix(),SMItems.CHAMPAGNE_GLASS,SMItems.CHAMPAGNE_CUP,6,16755200,0.0f));
+        CHAMPAGNE_CUP = wineItem(SMBlocks.CHAMPAGNE_CUP,4,false);
+        ORANGE_JUICE = drinkItem(SMBlocks.ORANGE_JUICE,4,SMConsumables.ORANGE_JUICE,true);
         GOBLET = ITEMS.register("goblet",()-> new PileItem(SMBlocks.GOBLET.get(),new Item.Properties().setId(modItemId("goblet")).useBlockDescriptionPrefix()));
+        CHAMPAGNE_GLASS = ITEMS.register("champagne_glass",()-> new PileItem(SMBlocks.CHAMPAGNE_GLASS.get(),new Item.Properties().setId(modItemId("champagne_glass")).useBlockDescriptionPrefix()));
+        BAR_TABLE = block(SMBlocks.BAR_TABLE);
     }
 
-    private static DeferredItem<Item> wineItem(Holder<Block> block, int eatCount,Consumable consumable){
+    private static DeferredItem<Item> wineItem(Holder<Block> block, int eatCount,Consumable consumable,boolean customField){
         Identifier identifier = block.unwrapKey().get().identifier();
-        return ITEMS.register(identifier.getPath(),()-> new WineItem(block.value(),new Item.Properties().food(COMMON_WINE,consumable).stacksTo(1).useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier)),eatCount));
+        return ITEMS.register(identifier.getPath(),()-> new WineItem(block.value(),new Item.Properties().food(COMMON_WINE_FOOD,consumable).stacksTo(1).useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier)),eatCount,customField));
     }
 
-    private static DeferredItem<Item> wineItem(Holder<Block> block,int eatCount){
+    private static DeferredItem<Item> wineItem(Holder<Block> block,int eatCount,boolean customField){
         Identifier identifier = block.unwrapKey().get().identifier();
-        return ITEMS.register(identifier.getPath(),()-> new WineItem(block.value(),new Item.Properties().food(COMMON_WINE).stacksTo(1).useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier)),eatCount));
+        return ITEMS.register(identifier.getPath(),()-> new WineItem(block.value(),new Item.Properties().food(COMMON_WINE_FOOD,COMMON_WINE_CONSUMABLE).stacksTo(1).useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier)),eatCount,customField));
+    }
+
+    private static DeferredItem<Item> drinkItem(Holder<Block> block, int eatCount,Consumable consumable,boolean customField){
+        Identifier identifier = block.unwrapKey().get().identifier();
+        return ITEMS.register(identifier.getPath(),()-> new DrinkItem(block.value(),new Item.Properties().food(COMMON_WINE_FOOD,consumable).stacksTo(1).useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier)),eatCount,customField,false));
+    }
+
+    private static DeferredItem<Item> drinkItem(Holder<Block> block,int eatCount,boolean customField){
+        Identifier identifier = block.unwrapKey().get().identifier();
+        return ITEMS.register(identifier.getPath(),()-> new DrinkItem(block.value(),new Item.Properties().food(COMMON_WINE_FOOD,COMMON_WINE_CONSUMABLE).stacksTo(1).useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier)),eatCount,customField,false));
+    }
+
+    public static DeferredItem<Item> block(Holder<Block> block){
+        Identifier identifier = block.unwrapKey().get().identifier();
+        return ITEMS.register(identifier.getPath(),()-> new BlockItem(block.value(),new Item.Properties().useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM,identifier))));
     }
 
     public static ResourceKey<Item> modItemId(String name){

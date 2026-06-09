@@ -1,10 +1,11 @@
 package com.renyigesai.sip_moment.common.init;
 
 import com.renyigesai.sip_moment.SipMomentMod;
+import com.renyigesai.sip_moment.common.blocks.BarTableBlock;
 import com.renyigesai.sip_moment.common.blocks.CupBlock;
 import com.renyigesai.sip_moment.common.blocks.WineBlock;
-import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlock;
-import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlockEntity;
+import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlock;
+import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -21,7 +22,7 @@ import java.util.function.Supplier;
 public class SMBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SipMomentMod.MODID);
 
-    public static final DeferredBlock<MixBlock> MIX_BLOCK;
+    public static final DeferredBlock<BeverageDisplayBlock> BEVERAGE_DISPLAY_BLOCK;
     public static final DeferredBlock<Block> HIGHBALL;
     public static final DeferredBlock<Block> KYOHO_WINE;
     public static final DeferredBlock<Block> KYOHO_WINE_CUP;
@@ -29,10 +30,15 @@ public class SMBlocks {
     public static final DeferredBlock<Block> BLACK_STAR_COFFEE;
     public static final DeferredBlock<Block> WHISKY;
     public static final DeferredBlock<Block> DAVID_MARTINEZ;
+    public static final DeferredBlock<Block> CHAMPAGNE;
+    public static final DeferredBlock<Block> CHAMPAGNE_CUP;
+    public static final DeferredBlock<Block> ORANGE_JUICE;
     public static final DeferredBlock<Block> GOBLET;
+    public static final DeferredBlock<Block> CHAMPAGNE_GLASS;
+    public static final DeferredBlock<Block> BAR_TABLE;
 
     static {
-        MIX_BLOCK = BLOCKS.register("mix_block", MixBlock::new);
+        BEVERAGE_DISPLAY_BLOCK = BLOCKS.register("beverage_display_block", BeverageDisplayBlock::new);
 
         HIGHBALL = wineBlock("highball",4);
 
@@ -48,7 +54,17 @@ public class SMBlocks {
 
         DAVID_MARTINEZ = wineBlock("david_martinez",4);
 
+        CHAMPAGNE = wineBlock("champagne",2);
+
+        CHAMPAGNE_CUP = wineBlock("champagne_cup",4);
+
+        ORANGE_JUICE = wineBlock("orange_juice",2);
+
         GOBLET = BLOCKS.register("goblet",()-> new CupBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(modBlockId("goblet")),4));
+
+        CHAMPAGNE_GLASS = BLOCKS.register("champagne_glass",()-> new CupBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(modBlockId("champagne_glass")),4));
+
+        BAR_TABLE = BLOCKS.register("bar_table",BarTableBlock::new);
     }
 
     private static DeferredBlock<Block> wineBlock(String name,int maxPile){
@@ -61,6 +77,6 @@ public class SMBlocks {
 
     public static class Entitys{
         public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, SipMomentMod.MODID);
-        public static final Supplier<BlockEntityType<MixBlockEntity>> MIX_BLOCK_ENTITY = REGISTER.register("mix_block", () -> new BlockEntityType<>(MixBlockEntity::new, MIX_BLOCK.get()));
+        public static final Supplier<BlockEntityType<BeverageDisplayBlockEntity>> BEVERAGE_DISPLAY_BLOCK_ENTITY = REGISTER.register("beverage_display_block", () -> new BlockEntityType<>(BeverageDisplayBlockEntity::new, BEVERAGE_DISPLAY_BLOCK.get()));
     }
 }

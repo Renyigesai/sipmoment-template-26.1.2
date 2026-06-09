@@ -35,23 +35,23 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("removal")
-public class MixBlock extends BaseEntityBlock {
+public class BeverageDisplayBlock extends BaseEntityBlock {
 
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty TRAY = BooleanProperty.create("tray");
 
-    public MixBlock(Identifier id) {
-        super(Properties.of().strength(0.5F,0.5F).sound(SoundType.WOOL).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).setId(ResourceKey.create(Registries.BLOCK,id)));
+    public BeverageDisplayBlock(Identifier id) {
+        super(Properties.of().strength(0.5F,0.5F).sound(SoundType.GLASS).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).setId(ResourceKey.create(Registries.BLOCK,id)));
         this.registerDefaultState(this.stateDefinition.any().setValue(TRAY,false).setValue(FACING, Direction.NORTH));
     }
 
-    public MixBlock(Properties properties) {
+    public BeverageDisplayBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(MixBlock::new);
+        return simpleCodec(BeverageDisplayBlock::new);
     }
 
     public RenderShape getRenderShape(BlockState pState) {
@@ -98,7 +98,7 @@ public class MixBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
         if (!player.isShiftKeyDown()){
-            ItemStack itemInHand = player.getItemInHand(hand);
+//            ItemStack itemInHand = player.getItemInHand(hand);
 //            if (itemInHand.is(BakeriesItems.WOOD_TRAY)){
 //                level.setBlock(pos,state.setValue(TRAY,true),3);
 //                return InteractionResult.SUCCESS;
@@ -110,11 +110,11 @@ public class MixBlock extends BaseEntityBlock {
 
     public InteractionResult take(Level pLevel, BlockPos pPos, Player pPlayer){
         BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-        MixBlockEntity mix;
-        if (!(blockEntity instanceof MixBlockEntity)){
+        BeverageDisplayBlockEntity mix;
+        if (!(blockEntity instanceof BeverageDisplayBlockEntity)){
             return InteractionResult.FAIL;
         }
-        mix = (MixBlockEntity) blockEntity;
+        mix = (BeverageDisplayBlockEntity) blockEntity;
         net.neoforged.neoforge.items.ItemStackHandler inventory = mix.getInventory();
         ItemStack outStack;
         int inventoryCount = mix.getInventoryCount();
@@ -139,7 +139,7 @@ public class MixBlock extends BaseEntityBlock {
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof MixBlockEntity mix){
+        if (blockEntity instanceof BeverageDisplayBlockEntity mix){
             return new ItemStack(mix.getInventory().getStackInSlot(0).getItem());
         }
         return super.getCloneItemStack(level, pos, state, includeData, player);
@@ -148,6 +148,6 @@ public class MixBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new MixBlockEntity(pPos,pState);
+        return new BeverageDisplayBlockEntity(pPos,pState);
     }
 }

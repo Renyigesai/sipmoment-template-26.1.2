@@ -1,6 +1,19 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "sip_moment:item/butter_beer"
+    "type": "minecraft:select",
+    "property": "minecraft:display_context",
+    "cases": [
+      {
+        "when": ["gui", "ground", "fixed", "on_shelf"],
+        "model": {
+          "type": "minecraft:model",
+          "model": "sip_moment:item/butter_beer"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "sip_moment:block/butter_beer_1"
+    }
   }
 }

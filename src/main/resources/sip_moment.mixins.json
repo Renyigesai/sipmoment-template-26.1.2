@@ -3,7 +3,8 @@
   "package": "com.renyigesai.sip_moment.common.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "ConsumableMixin"
+    "ConsumableMixin",
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

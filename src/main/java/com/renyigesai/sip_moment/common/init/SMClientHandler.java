@@ -3,30 +3,35 @@ package com.renyigesai.sip_moment.common.init;
 import com.renyigesai.sip_moment.SipMomentMod;
 import com.renyigesai.sip_moment.common.client.particles.WineLiquidParticle;
 import com.renyigesai.sip_moment.common.client.particles.WineLiquidParticleOptions;
-import com.renyigesai.sip_moment.common.client.renderer.blockentity.mix_block.MixBlockRender;
+import com.renyigesai.sip_moment.common.client.renderer.blockentity.mix_block.BeverageDisplayBlockRender;
+import com.renyigesai.sip_moment.common.manager.LivingEntityManager;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.jspecify.annotations.Nullable;
 
 @EventBusSubscriber(value = Dist.CLIENT,modid = SipMomentMod.MODID)
 public class SMClientHandler {
-    private static float rollAngle = 0f;
 
     @SubscribeEvent
     public static void onRenders(EntityRenderersEvent.RegisterRenderers event){
-        event.registerBlockEntityRenderer(SMBlocks.Entitys.MIX_BLOCK_ENTITY.get(), MixBlockRender::new);
+        event.registerBlockEntityRenderer(SMBlocks.Entitys.BEVERAGE_DISPLAY_BLOCK_ENTITY.get(), BeverageDisplayBlockRender::new);
     }
 
     @SubscribeEvent
@@ -49,12 +54,16 @@ public class SMClientHandler {
     public static void onCameraAngles(ViewportEvent.ComputeCameraAngles event) {
         Minecraft instance = Minecraft.getInstance();
         LocalPlayer player = instance.player;
-        if (player != null && player.hasEffect(SMMobEffects.DRUNK) && player.getEffect(SMMobEffects.DRUNK).getAmplifier() >= 4){
-            float time = (player.tickCount + instance.getDeltaTracker().getGameTimeDeltaPartialTick(false)) / 20f;
-            float cycleTime = time % 10.0f;
-            float rollAngle = (cycleTime / 5.0f) * -360f;
-            event.setRoll(rollAngle);
+        if (player != null) {
+            int capacity_for_liquor = player.getData(SMAttachments.CAPACITY_FOR_LIQUOR);
+            if (player.hasEffect(SMMobEffects.DRUNK) && player.getEffect(SMMobEffects.DRUNK).getAmplifier() >= capacity_for_liquor){
+                float time = (player.tickCount + instance.getDeltaTracker().getGameTimeDeltaPartialTick(false)) / 20f;
+                int amplifier = player.getEffect(SMMobEffects.DRUNK).getAmplifier();
+                float period = amplifier == capacity_for_liquor ? 5f : 15f;
+                float maxAngle = amplifier == capacity_for_liquor ? 45f : 180f;
+                float rollAngle = maxAngle * (float) Math.sin(2.0 * Math.PI * time / period);
+                event.setRoll(rollAngle);
+            }
         }
     }
-
 }

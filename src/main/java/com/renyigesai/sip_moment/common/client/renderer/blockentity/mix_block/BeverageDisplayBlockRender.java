@@ -2,8 +2,8 @@ package com.renyigesai.sip_moment.common.client.renderer.blockentity.mix_block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlock;
-import com.renyigesai.sip_moment.common.blocks.mix_block.MixBlockEntity;
+import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlock;
+import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlockEntity;
 import com.renyigesai.sip_moment.common.client.renderer.blockentity.BlockEntityItemRenderer;
 import com.renyigesai.sip_moment.common.utils.ItemUtils;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -22,7 +22,7 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class MixBlockRender extends BlockEntityItemRenderer<MixBlockEntity, MixBlockRenderState> {
+public class BeverageDisplayBlockRender extends BlockEntityItemRenderer<BeverageDisplayBlockEntity, BeverageDisplayRenderState> {
 
     public static final float ADD_SIZE = 0.25f;
     public static final Vec2[][] VEC2S = {
@@ -33,28 +33,28 @@ public class MixBlockRender extends BlockEntityItemRenderer<MixBlockEntity, MixB
             new Vec2[]{new Vec2(0.5f + ADD_SIZE, 0.5f + ADD_SIZE), new Vec2(0.5f - ADD_SIZE, 0.5f + ADD_SIZE), new Vec2(0.5f + ADD_SIZE, 0.5f - ADD_SIZE), new Vec2(0.5f - ADD_SIZE, 0.5f - ADD_SIZE)}
     };
 
-    public MixBlockRender(BlockEntityRendererProvider.Context context) {
+    public BeverageDisplayBlockRender(BlockEntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    public NonNullList<ItemStack> items(MixBlockEntity blockEntity) {
+    public NonNullList<ItemStack> items(BeverageDisplayBlockEntity blockEntity) {
         return ItemUtils.toNonNullList(blockEntity.getInventory());
     }
 
     @Override
-    public void extract(MixBlockEntity blockEntity, @NotNull MixBlockRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.CrumblingOverlay breakProgress) {
+    public void extract(BeverageDisplayBlockEntity blockEntity, @NotNull BeverageDisplayRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.CrumblingOverlay breakProgress) {
         state.facing = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING).getOpposite();
-        state.tray = blockEntity.getBlockState().getValue(MixBlock.TRAY);
+        state.tray = blockEntity.getBlockState().getValue(BeverageDisplayBlock.TRAY);
     }
 
     @Override
-    public Level level(MixBlockEntity blockEntity) {
+    public Level level(BeverageDisplayBlockEntity blockEntity) {
         return blockEntity.level();
     }
 
     @Override
-    public void render(ItemStackRenderState[] itemStackRenderStates, BlockModelRenderState[] blockModelRenderStates, MixBlockRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+    public void render(ItemStackRenderState[] itemStackRenderStates, BlockModelRenderState[] blockModelRenderStates, BeverageDisplayRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         if (!(state.getInventoryCount() >= 1)){
             return;
         }
@@ -84,8 +84,8 @@ public class MixBlockRender extends BlockEntityItemRenderer<MixBlockEntity, MixB
     }
 
     @Override
-    public MixBlockRenderState createRenderState() {
-        return new MixBlockRenderState(4);
+    public BeverageDisplayRenderState createRenderState() {
+        return new BeverageDisplayRenderState(4);
     }
 
     private Vec2 transformPositionByDirection(Vec2 position, Direction direction) {

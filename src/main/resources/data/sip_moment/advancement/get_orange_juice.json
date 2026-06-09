@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "count": 1,
+      "id": "sip_moment:orange_juice"
+    },
+    "title": {
+      "translate": "advancements.sip_moment.get_orange_juice.title"
+    },
+    "description": {
+      "translate": "advancements.sip_moment.get_orange_juice.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sieving": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sip_moment:orange_juice"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "parent": "sip_moment:root"
+}

@@ -26,14 +26,14 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.slf4j.Logger;
 @SuppressWarnings("removal")
-public class MixBlockEntity extends BlockEntity implements ListBackedContainer, ItemOwner {
+public class BeverageDisplayBlockEntity extends BlockEntity implements ListBackedContainer, ItemOwner {
 
 
     private ItemStackHandler inventory;
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public MixBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(SMBlocks.Entitys.MIX_BLOCK_ENTITY.get(), pPos, pBlockState);
+    public BeverageDisplayBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(SMBlocks.Entitys.BEVERAGE_DISPLAY_BLOCK_ENTITY.get(), pPos, pBlockState);
         inventory = new ItemStackHandler(4);
     }
 
@@ -130,7 +130,7 @@ public class MixBlockEntity extends BlockEntity implements ListBackedContainer, 
     }
 
     public float getVisualRotationYInDegrees() {
-        return ((Direction)this.getBlockState().getValue(MixBlock.FACING)).getOpposite().toYRot();
+        return ((Direction)this.getBlockState().getValue(BeverageDisplayBlock.FACING)).getOpposite().toYRot();
     }
 
     public void updateBlock() {

@@ -1,5 +1,6 @@
 package com.renyigesai.sip_moment.common.mixin;
 
+import com.renyigesai.sip_moment.common.items.DrinkItem;
 import com.renyigesai.sip_moment.common.items.WineItem;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +18,7 @@ public class ConsumableMixin {
     @Unique
     @Inject(method = "onConsume",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;gameEvent(Lnet/minecraft/core/Holder;)V"), cancellable = true)
    public void onConsume(Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir){
-        if (stack.getItem() instanceof WineItem repeatEatItem){
+        if (stack.getItem() instanceof DrinkItem repeatEatItem){
             cir.setReturnValue(repeatEatItem.onConsume(level, user, stack));
         }
    }
