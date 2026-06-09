@@ -24,16 +24,9 @@ public class WineListScreen extends AbstractContainerScreen<WineListMenu> {
     public final Player player;
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "textures/gui/wine_list.png");
     private static final int[] LINE = new int[]{59,91,123,155};
-    private static final int BUTTON_WIDTH = 16;
-    private static final int BUTTON_HEIGHT = 16;
-    private static final int BUTTON_X_OFFSET = 136;
-    private final Font font;
-    private int lastPage = -1;
-    private final java.util.Map<Integer, Rectangle> buttonBounds = new java.util.HashMap<>();
     public WineListScreen(WineListMenu p_97741_, Inventory p_97742_, Component p_97743_) {
         super(p_97741_, p_97742_, p_97743_);
         this.player = p_97742_.player;
-        this.font = Minecraft.getInstance().font;
         this.titleLabelY += 16;
         this.titleLabelX -= (width - 139) / 2;
     }

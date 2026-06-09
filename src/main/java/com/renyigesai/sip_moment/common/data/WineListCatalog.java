@@ -11,10 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @EventBusSubscriber(modid = SipMomentMod.MODID)
 public class WineListCatalog {
@@ -44,5 +41,12 @@ public class WineListCatalog {
 
     public static List<WineListIngredient> getWineList(){
         return wineListMap.values().stream().toList();
+    }
+
+    public static List<WineListIngredient> getWineList(boolean sorted){
+        return wineListMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.comparing(Identifier::getPath)))
+                .map(Map.Entry::getValue)
+                .toList();
     }
 }

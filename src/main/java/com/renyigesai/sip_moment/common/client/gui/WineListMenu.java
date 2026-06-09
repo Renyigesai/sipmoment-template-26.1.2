@@ -45,7 +45,7 @@ public class WineListMenu extends AbstractContainerMenu {
         int end = Math.min(start + itemsPerPage, WineListCatalog.getWineList().size());
         int line = 0;
         for (int i = start; i < end; i++) {
-            WineListIngredient stacks = WineListCatalog.getWineList().get(i);
+            WineListIngredient stacks = WineListCatalog.getWineList(true).get(i);
             List<ItemStack> gives = stacks.getGives();
 
             List<ItemStack> results = stacks.getResults();
