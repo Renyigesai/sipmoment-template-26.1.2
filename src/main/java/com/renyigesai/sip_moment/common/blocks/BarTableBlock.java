@@ -16,18 +16,26 @@ import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BarTableBlock extends HorizontalDirectionalBlock {
+    public static final VoxelShape BOX_UP;
+    public static final VoxelShape BOX_DOWN;
+    public static final VoxelShape BOX;
 
     public BarTableBlock(Identifier identifier) {
-        super(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,identifier)));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(ResourceKey.create(Registries.BLOCK,identifier)));
     }
 
     public BarTableBlock(Properties properties) {
@@ -37,6 +45,11 @@ public class BarTableBlock extends HorizontalDirectionalBlock {
     @Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return simpleCodec(BarTableBlock::new);
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return BOX;
     }
 
     @Override
@@ -59,5 +72,11 @@ public class BarTableBlock extends HorizontalDirectionalBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+    }
+
+    static {
+        BOX_UP = box(0,13,0,16,16,16);
+        BOX_DOWN = box(5,0,5,11,13,11);
+        BOX = Shapes.or(BOX_UP,BOX_DOWN);
     }
 }

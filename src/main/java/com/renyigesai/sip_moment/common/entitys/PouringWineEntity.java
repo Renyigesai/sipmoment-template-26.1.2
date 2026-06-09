@@ -75,7 +75,7 @@ public class PouringWineEntity extends Entity implements IEntityWithComplexSpawn
                     WineLiquidParticleOptions particleOptions = new WineLiquidParticleOptions(
                             getWineColor(), 1.0f
                     );
-                    serverLevel.sendParticles(particleOptions, this.getX(), this.getY() + getInitY(), this.getZ(), 1, 0, 0, 0, 0);
+                    serverLevel.sendParticles(particleOptions, this.getX(), this.getY() + getInitY() + 0.5f, this.getZ(), 1, 0, 0, 0, 0);
                 }
 
             }

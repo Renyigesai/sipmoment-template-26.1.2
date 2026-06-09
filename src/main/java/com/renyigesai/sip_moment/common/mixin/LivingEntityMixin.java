@@ -15,8 +15,7 @@ public abstract class LivingEntityMixin {
             method = "hurtServer",
             at = @At("HEAD"),
             argsOnly = true,
-            ordinal = 0
-    )
+            name = "source")
     private DamageSource modifyDamageSource(DamageSource source) {
         if (source.getEntity() instanceof LivingEntity living && living.hasEffect(SMMobEffects.SINCERELY_FOR_YOU)){
             return new DamageSource(living.self().damageSources().genericKill().typeHolder(), source.getEntity(), source.getDirectEntity(), source.getSourcePosition());

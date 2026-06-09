@@ -12,6 +12,7 @@
   "block.sip_moment.champagne_cup": "杯装香槟",
   "block.sip_moment.champagne_glass": "香槟杯",
   "block.sip_moment.orange_juice": "橙汁",
+  "block.sip_moment.bar_table": "酒桌",
   "item.sip_moment.example_item": "Example Item",
   "item_group.sip_moment.main_tab": "小酌一刻",
   "tooltips.sip_moment.repeat_eat_item_drink": "喝",

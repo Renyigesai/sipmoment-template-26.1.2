@@ -71,6 +71,7 @@ public class WineListScreen extends AbstractContainerScreen<WineListMenu> {
                 int buttonHeight = 10;
                 if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
                     ClientPacketDistributor.sendToServer(new SyncGivesPayload(i));
+                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.0f));
                     return true;
                 }
             }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sip_moment:block/bar_table",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "sip_moment:block/bar_table",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "sip_moment:block/bar_table"
+    },
+    "facing=west": {
+      "model": "sip_moment:block/bar_table",
+      "y": 90
+    }
+  }
+}
