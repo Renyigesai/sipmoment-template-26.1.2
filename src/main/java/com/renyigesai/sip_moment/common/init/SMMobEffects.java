@@ -3,7 +3,6 @@ package com.renyigesai.sip_moment.common.init;
 import com.renyigesai.sip_moment.SipMomentMod;
 import com.renyigesai.sip_moment.common.potion.DrunkMobEffect;
 import com.renyigesai.sip_moment.common.potion.EdgerunnersMobEffect;
-import com.renyigesai.sip_moment.common.potion.FuriousMobEffect;
 import com.renyigesai.sip_moment.common.potion.SMMobEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;

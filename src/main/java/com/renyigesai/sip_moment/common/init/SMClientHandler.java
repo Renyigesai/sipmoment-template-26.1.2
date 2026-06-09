@@ -1,6 +1,8 @@
 package com.renyigesai.sip_moment.common.init;
 
 import com.renyigesai.sip_moment.SipMomentMod;
+import com.renyigesai.sip_moment.common.client.particles.DrunkParticle;
+import com.renyigesai.sip_moment.common.client.particles.DrunkParticleOptions;
 import com.renyigesai.sip_moment.common.client.particles.WineLiquidParticle;
 import com.renyigesai.sip_moment.common.client.particles.WineLiquidParticleOptions;
 import com.renyigesai.sip_moment.common.client.renderer.blockentity.mix_block.BeverageDisplayBlockRender;
@@ -39,13 +41,14 @@ public class SMClientHandler {
         event.registerSpriteSet(SMParticleTypes.WINE_LIQUID.get(), (spriteSet)-> new ParticleProvider<>() {
             @Override
             public @Nullable Particle createParticle(WineLiquidParticleOptions options, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux,RandomSource source) {
-                try {
-                    return new WineLiquidParticle(level,x,y,z,xAux,yAux,zAux,options,spriteSet);
-                }catch (Exception e){
-                    e.printStackTrace();
-                    return null;
-                }
+                return new WineLiquidParticle(level,x,y,z,xAux,yAux,zAux,options,spriteSet);
+            }
+        });
 
+        event.registerSpriteSet(SMParticleTypes.DRUNK.get(), (spriteSet)-> new ParticleProvider<>() {
+            @Override
+            public @Nullable Particle createParticle(DrunkParticleOptions options, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux, RandomSource source) {
+                return new DrunkParticle(level,x,y,z,xAux,yAux,zAux,options,spriteSet);
             }
         });
     }

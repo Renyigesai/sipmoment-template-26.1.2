@@ -44,10 +44,11 @@ public class WineItem extends DrinkItem{
                 if (living.hasEffect(SMMobEffects.DRUNK) ) {
                     if (living.getEffect(SMMobEffects.DRUNK).getAmplifier() < 9){
                         int amplifier = living.getEffect(SMMobEffects.DRUNK).getAmplifier();
-                        living.addEffect(new MobEffectInstance(SMMobEffects.DRUNK, living.getEffect(SMMobEffects.DRUNK).getDuration() + 200, amplifier + 1), living);
+                        living.removeEffect(SMMobEffects.DRUNK);
+                        living.addEffect(new MobEffectInstance(SMMobEffects.DRUNK, 600, amplifier + 1,false,true), living);
                     }
                 }else {
-                    living.addEffect(new MobEffectInstance(SMMobEffects.DRUNK, 600,0));
+                    living.addEffect(new MobEffectInstance(SMMobEffects.DRUNK, 600,0,false,true));
                 }
             }catch (NullPointerException e){
                 SipMomentMod.LOGGER.error("WineItem eat {}", e);
