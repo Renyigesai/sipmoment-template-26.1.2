@@ -2,7 +2,6 @@ package com.renyigesai.sip_moment.common.mixin;
 
 import com.renyigesai.sip_moment.common.init.SMMobEffects;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

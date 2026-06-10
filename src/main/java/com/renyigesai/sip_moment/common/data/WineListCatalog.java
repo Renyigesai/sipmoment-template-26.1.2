@@ -36,7 +36,6 @@ public class WineListCatalog {
         WineListCatalog.wineListMap.clear();
         WineListCatalog.wineListMap.putAll(wineListInitEvent.getWineListMap());
 
-        System.err.println(WineListCatalog.wineListMap);
     }
 
     public static List<WineListIngredient> getWineList(){

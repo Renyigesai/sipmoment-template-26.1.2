@@ -9,8 +9,8 @@ import java.util.List;
 
 public class WineListIngredient {
 
-    private final List<ItemStack> gives;
-    private final List<ItemStack> results;
+    private List<ItemStack> gives;
+    private List<ItemStack> results;
 
     public static final StreamCodec<RegistryFriendlyByteBuf, WineListIngredient> STREAM_CODEC = StreamCodec.composite(
             ItemStack.STREAM_CODEC.apply(ByteBufCodecs.list()),
@@ -33,8 +33,22 @@ public class WineListIngredient {
         return results;
     }
 
-    public static List<ItemStack> toArr(ItemStack... stacks){
-        return List.of(stacks);
+    public WineListIngredient setGives(List<ItemStack> gives) {
+        this.gives = gives;
+        return this;
+    }
+
+    public WineListIngredient setResults(List<ItemStack> results) {
+        this.results = results;
+        return this;
+    }
+
+    public static List<ItemStack> toArr(ItemStack stack){
+        return List.of(stack);
+    }
+
+    public static List<ItemStack> toArr(ItemStack stack1,ItemStack stack2){
+        return List.of(stack1,stack2);
     }
 
 }

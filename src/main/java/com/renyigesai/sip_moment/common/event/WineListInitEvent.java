@@ -2,6 +2,7 @@ package com.renyigesai.sip_moment.common.event;
 
 import com.renyigesai.sip_moment.common.data.WineListIngredient;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.Event;
 
 import java.util.ArrayList;
@@ -24,6 +25,14 @@ public class WineListInitEvent extends Event {
         if (this.wineListMap.get(id) != null){
             this.wineListMap.remove(id);
         }
+    }
+
+    public void removeAll(){
+        this.wineListMap.clear();
+    }
+
+    public WineListIngredient getWineListIngredient(Identifier id){
+        return wineListMap.get(id);
     }
 
     public List<WineListIngredient> getWineList() {
