@@ -55,7 +55,7 @@ public class NetworkHandler {
                 SyncGivesPayload.STREAM_CODEC,
                 (payload, context) -> context.enqueueWork(() -> {
                     var player = context.player();
-                    WineListIngredient wineListIngredient = WineListCatalog.getWineList().get(payload.row());
+                    WineListIngredient wineListIngredient = WineListCatalog.getWineList(true).get(payload.row());
                     if (wineListIngredient != null){
                         List<ItemStack> gives = wineListIngredient.getGives();
                         if (!hasItems(player,gives)){
