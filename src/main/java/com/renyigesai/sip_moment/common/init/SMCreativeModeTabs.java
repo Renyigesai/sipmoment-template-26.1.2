@@ -30,6 +30,9 @@ public class SMCreativeModeTabs {
                         output.accept(SMItems.GOBLET);
                         output.accept(SMItems.CHAMPAGNE_GLASS);
                         output.accept(SMItems.BAR_TABLE);
+                        output.accept(SMItems.BAR_CHAIR);
+
+                        output.accept(SMItems.MUSIC_DISC_DUST_TO_DUST);
                     }
                     ).build());
 

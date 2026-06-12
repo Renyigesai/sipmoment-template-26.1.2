@@ -3,9 +3,11 @@ package com.renyigesai.sip_moment.common.client.gui;
 import com.renyigesai.sip_moment.SipMomentMod;
 import com.renyigesai.sip_moment.common.data.WineListCatalog;
 import com.renyigesai.sip_moment.common.network.SyncGivesPayload;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -24,11 +26,13 @@ public class WineListScreen extends AbstractContainerScreen<WineListMenu> {
     public final Player player;
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "textures/gui/wine_list.png");
     private static final int[] LINE = new int[]{59,91,123,155};
+//    private final Font font;
     public WineListScreen(WineListMenu p_97741_, Inventory p_97742_, Component p_97743_) {
         super(p_97741_, p_97742_, p_97743_);
         this.player = p_97742_.player;
         this.titleLabelY += 16;
         this.titleLabelX -= (width - 139) / 2;
+//        font = Minecraft.getInstance().font;
     }
 
     @Override
@@ -43,6 +47,14 @@ public class WineListScreen extends AbstractContainerScreen<WineListMenu> {
         for (int i = start, row = 0; i < end; i++, row++) {
             graphics.blit(RenderPipelines.GUI_TEXTURED,TEXTURE,x + 117,y + LINE[row],0,187,10,10,256,256);
         }
+
+        int totalItems = WineListCatalog.getWineList().size();
+        int totalPages = Math.max(1, (totalItems + menu.itemsPerPage - 1) / menu.itemsPerPage);
+        int currentDisplayPage = page + 1; // 转为1基显示
+        Component pageText = Component.literal(currentDisplayPage + "/" + totalPages);
+        int textX = x + 110;
+        int textY = y + 171;
+        graphics.text(this.font, pageText, textX, textY, -12566464, false);
     }
 
     @Override

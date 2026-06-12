@@ -6,6 +6,7 @@ import com.renyigesai.sip_moment.common.blocks.CupBlock;
 import com.renyigesai.sip_moment.common.blocks.WineBlock;
 import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlock;
 import com.renyigesai.sip_moment.common.blocks.mix_block.BeverageDisplayBlockEntity;
+import com.renyigesai.sip_moment.common.blocks.sofa.BarChairBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -36,6 +37,7 @@ public class SMBlocks {
     public static final DeferredBlock<Block> GOBLET;
     public static final DeferredBlock<Block> CHAMPAGNE_GLASS;
     public static final DeferredBlock<Block> BAR_TABLE;
+    public static final DeferredBlock<Block> BAR_CHAIR;
 
     static {
         BEVERAGE_DISPLAY_BLOCK = BLOCKS.register("beverage_display_block", BeverageDisplayBlock::new);
@@ -65,6 +67,8 @@ public class SMBlocks {
         CHAMPAGNE_GLASS = BLOCKS.register("champagne_glass",()-> new CupBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(modBlockId("champagne_glass")),4));
 
         BAR_TABLE = BLOCKS.register("bar_table",BarTableBlock::new);
+
+        BAR_CHAIR = BLOCKS.register("bar_chair",()-> new BarChairBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).setId(modBlockId("bar_chair"))));
     }
 
     private static DeferredBlock<Block> wineBlock(String name,int maxPile){

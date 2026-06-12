@@ -1,8 +1,16 @@
 {
-  "block.generic.pouring_wine": {
+  "pouring_wine": {
     "subtitle":"block.generic.pouring_wine",
     "sounds": [
       "sip_moment:pouring_wine"
+    ]
+  },
+  "music_disc_dust_to_dust": {
+    "sounds": [
+      {
+        "name": "sip_moment:music_disc_dust_to_dust",
+        "stream": true
+      }
     ]
   }
 }

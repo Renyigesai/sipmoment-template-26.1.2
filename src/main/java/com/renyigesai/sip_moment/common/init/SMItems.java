@@ -8,9 +8,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -35,6 +33,9 @@ public class SMItems {
     public static final DeferredItem<Item> GOBLET;
     public static final DeferredItem<Item> CHAMPAGNE_GLASS;
     public static final DeferredItem<Item> BAR_TABLE;
+    public static final DeferredItem<Item> BAR_CHAIR;
+
+    public static final DeferredItem<Item> MUSIC_DISC_DUST_TO_DUST;
 
 
     static {
@@ -51,6 +52,9 @@ public class SMItems {
         GOBLET = ITEMS.register("goblet",()-> new PileItem(SMBlocks.GOBLET.get(),new Item.Properties().setId(modItemId("goblet")).useBlockDescriptionPrefix()));
         CHAMPAGNE_GLASS = ITEMS.register("champagne_glass",()-> new PileItem(SMBlocks.CHAMPAGNE_GLASS.get(),new Item.Properties().setId(modItemId("champagne_glass")).useBlockDescriptionPrefix()));
         BAR_TABLE = block(SMBlocks.BAR_TABLE);
+        BAR_CHAIR = block(SMBlocks.BAR_CHAIR);
+        MUSIC_DISC_DUST_TO_DUST = ITEMS.register("music_disc_dust_to_dust",MusicDiscDustToDustItem::new);
+
     }
 
     private static DeferredItem<Item> wineItem(Holder<Block> block, int eatCount,Consumable consumable,boolean customField){

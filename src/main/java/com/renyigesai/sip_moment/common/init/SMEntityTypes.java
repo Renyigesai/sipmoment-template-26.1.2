@@ -2,6 +2,7 @@ package com.renyigesai.sip_moment.common.init;
 
 
 import com.renyigesai.sip_moment.SipMomentMod;
+import com.renyigesai.sip_moment.common.blocks.sofa.BarChairEntity;
 import com.renyigesai.sip_moment.common.entitys.PouringWineEntity;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
@@ -26,9 +27,13 @@ public class SMEntityTypes {
     public static final Supplier<EntityType<PouringWineEntity>> POURING_WINE = ENTITY.register("pouring_wine", () ->
             EntityType.Builder.of(PouringWineEntity::new, MobCategory.MISC).sized(0.05f, 0.05f).build(ResourceKey.create(Registries.ENTITY_TYPE,Identifier.fromNamespaceAndPath(SipMomentMod.MODID,"pouring_wine"))));
 
+    public static final Supplier<EntityType<BarChairEntity>> BAR_CHAIR = ENTITY.register("bar_chair", () ->
+            EntityType.Builder.of(BarChairEntity::new, MobCategory.MISC).sized(0.05f, 0.05f).build(ResourceKey.create(Registries.ENTITY_TYPE,Identifier.fromNamespaceAndPath(SipMomentMod.MODID,"bar_chair"))));
+
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> EntityRenderers.register(POURING_WINE.get(), PouringWineEntity.PouringWineRender::new));
+        event.enqueueWork(() -> EntityRenderers.register(BAR_CHAIR.get(), BarChairEntity.BarChairEntityRender::new));
     }
 
 }

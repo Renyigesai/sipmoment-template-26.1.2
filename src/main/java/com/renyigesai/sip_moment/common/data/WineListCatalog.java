@@ -29,6 +29,7 @@ public class WineListCatalog {
         wineListIngredients.put(Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "butter_beer"), new WineListIngredient(WineListIngredient.toArr(new ItemStack(Items.EMERALD, 10)), WineListIngredient.toArr(new ItemStack(SMItems.BUTTER_BEER.get()))));
         wineListIngredients.put(Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "black_star_coffee"), new WineListIngredient(WineListIngredient.toArr(new ItemStack(Items.EMERALD, 6)), WineListIngredient.toArr(new ItemStack(SMItems.BLACK_STAR_COFFEE.get()))));
         wineListIngredients.put(Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "orange_juice"), new WineListIngredient(WineListIngredient.toArr(new ItemStack(Items.EMERALD, 5)), WineListIngredient.toArr(new ItemStack(SMItems.ORANGE_JUICE.get()))));
+        wineListIngredients.put(Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "music_disc_dust_to_dust"), new WineListIngredient(WineListIngredient.toArr(new ItemStack(Items.EMERALD, 36)), WineListIngredient.toArr(new ItemStack(SMItems.MUSIC_DISC_DUST_TO_DUST.get()))));
 
         WineListInitEvent wineListInitEvent = new WineListInitEvent(wineListIngredients);
         NeoForge.EVENT_BUS.post(wineListInitEvent);

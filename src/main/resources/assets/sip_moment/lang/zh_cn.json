@@ -13,8 +13,10 @@
   "block.sip_moment.champagne_glass": "香槟杯",
   "block.sip_moment.orange_juice": "橙汁",
   "block.sip_moment.bar_table": "酒桌",
+  "block.sip_moment.bar_chair": "酒吧椅",
   "item.sip_moment.example_item": "Example Item",
   "item_group.sip_moment.main_tab": "小酌一刻",
+  "item.sip_moment.music_disc_dust_to_dust": "音乐唱片",
   "tooltips.sip_moment.repeat_eat_item_drink": "喝",
   "tooltips.sip_moment.pile_item_place": "可放置",
   "effect.sip_moment.drunk": "酒劲",
@@ -41,5 +43,6 @@
   "advancements.sip_moment.get_david_martinez.title": "太阳，好热。",
   "advancements.sip_moment.get_david_martinez.descr": "获得大卫·马丁内斯",
   "advancements.sip_moment.drunk.title": "酒劲上来了！",
-  "advancements.sip_moment.drunk.descr": "获得酒劲药水效果。"
+  "advancements.sip_moment.drunk.descr": "获得酒劲药水效果。",
+  "jukebox_song.sip_moment.dust_to_dust": "KING_VITIONNOT - Dust To Dust"
 }

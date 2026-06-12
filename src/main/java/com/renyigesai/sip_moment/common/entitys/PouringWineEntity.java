@@ -69,7 +69,7 @@ public class PouringWineEntity extends Entity implements IEntityWithComplexSpawn
             refreshExistence();
             if (level() instanceof ServerLevel serverLevel){
                 if (time == 10){
-                    serverLevel.playSound(null,this.getX(), this.getY(), this.getZ(), SMSounds.POURING_WINE.get(), SoundSource.BLOCKS);
+                    serverLevel.playSound(null,this.getX(), this.getY(), this.getZ(), SMSounds.POURING_WINE.value(), SoundSource.BLOCKS);
                 }
                 if (time > 10 && time < 55){
                     WineLiquidParticleOptions particleOptions = new WineLiquidParticleOptions(

@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "jukebox_song.sip_moment.dust_to_dust"
+  },
+  "length_in_seconds": 42.0,
+  "sound_event": "sip_moment:music_disc_dust_to_dust"
+}

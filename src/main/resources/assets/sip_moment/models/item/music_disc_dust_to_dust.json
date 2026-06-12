@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "sip_moment:item/music_disc_dust_to_dust"
+  }
+}

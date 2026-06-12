@@ -13,8 +13,10 @@
   "block.sip_moment.champagne_glass": "Champagne Glass",
   "block.sip_moment.orange_juice": "Orange Juice",
   "block.sip_moment.bar_table": "Bar Table",
+  "block.sip_moment.bar_chair": "Bar Chair",
   "item.sip_moment.example_item": "Example Item",
   "item_group.sip_moment.main_tab": "Sip Moment",
+  "item.sip_moment.music_disc_dust_to_dust": "Music Disc",
   "tooltips.sip_moment.repeat_eat_item_drink": "Drink",
   "tooltips.sip_moment.pile_item_place": "Place",
   "effect.sip_moment.drunk": "Drunk",
@@ -41,5 +43,6 @@
   "advancements.sip_moment.get_david_martinez.title": "The sun is so hot.",
   "advancements.sip_moment.get_david_martinez.descr": "get David Martinez",
   "advancements.sip_moment.drunk.title": "The alcohol is taking effect!",
-  "advancements.sip_moment.drunk.descr": "get Drunk Effect."
+  "advancements.sip_moment.drunk.descr": "get Drunk Effect.",
+  "jukebox_song.sip_moment.dust_to_dust": "KING_VITIONNOT - Dust To Dust"
 }
