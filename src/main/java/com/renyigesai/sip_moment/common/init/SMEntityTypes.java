@@ -3,13 +3,17 @@ package com.renyigesai.sip_moment.common.init;
 
 import com.renyigesai.sip_moment.SipMomentMod;
 import com.renyigesai.sip_moment.common.blocks.sofa.BarChairEntity;
+import com.renyigesai.sip_moment.common.client.renderer.entity.SpearLonginusRender;
 import com.renyigesai.sip_moment.common.entitys.PouringWineEntity;
+import com.renyigesai.sip_moment.common.entitys.ThrownSpearLonginus;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -30,10 +34,25 @@ public class SMEntityTypes {
     public static final Supplier<EntityType<BarChairEntity>> BAR_CHAIR = ENTITY.register("bar_chair", () ->
             EntityType.Builder.of(BarChairEntity::new, MobCategory.MISC).sized(0.05f, 0.05f).build(ResourceKey.create(Registries.ENTITY_TYPE,Identifier.fromNamespaceAndPath(SipMomentMod.MODID,"bar_chair"))));
 
+    public static final Supplier<EntityType<ThrownSpearLonginus>> SPEAR_LONGINUS = ENTITY.register(
+            "spear_longinus",
+            () -> EntityType.Builder.of(
+                            (EntityType<ThrownSpearLonginus> type, Level level) -> new ThrownSpearLonginus(type, level),
+                            MobCategory.MISC
+                    )
+                    .noLootTable()
+                    .sized(0.5F, 0.5F)
+                    .eyeHeight(0.13F)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(SipMomentMod.MODID, "spear_longinus")))
+    );
+
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> EntityRenderers.register(POURING_WINE.get(), PouringWineEntity.PouringWineRender::new));
         event.enqueueWork(() -> EntityRenderers.register(BAR_CHAIR.get(), BarChairEntity.BarChairEntityRender::new));
+        event.enqueueWork(() -> EntityRenderers.register(SPEAR_LONGINUS.get(), SpearLonginusRender::new));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.renyigesai.sip_moment.common.init;
 
 import com.renyigesai.sip_moment.SipMomentMod;
+import com.renyigesai.sip_moment.common.client.model.SpearLonginusModel;
 import com.renyigesai.sip_moment.common.client.particles.DrunkParticle;
 import com.renyigesai.sip_moment.common.client.particles.DrunkParticleOptions;
 import com.renyigesai.sip_moment.common.client.particles.WineLiquidParticle;
@@ -34,6 +35,11 @@ public class SMClientHandler {
     @SubscribeEvent
     public static void onRenders(EntityRenderersEvent.RegisterRenderers event){
         event.registerBlockEntityRenderer(SMBlocks.Entitys.BEVERAGE_DISPLAY_BLOCK_ENTITY.get(), BeverageDisplayBlockRender::new);
+    }
+
+    @SubscribeEvent
+    public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(SpearLonginusModel.LAYER_LOCATION, SpearLonginusModel::createBodyLayer);
     }
 
     @SubscribeEvent
