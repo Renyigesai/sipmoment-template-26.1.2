@@ -26,7 +26,19 @@ sourceSets.main.resources {
 }
 
 repositories {
-    // Add here additional repositories if required by some of the dependencies below.
+    removeAll { it.url.toString().contains("maven.neoforged.net") }
+
+    mavenLocal()
+    maven { url = uri("https://libraries.minecraft.net/") }
+    maven { url = uri("https://neoforged.forgecdn.net/releases") }
+    maven { url = uri("https://neoforged.forgecdn.net/mojang-meta") }
+    maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    mavenCentral()
 }
 
 base {

@@ -1,10 +1,20 @@
+// settings.gradle
 pluginManagement {
     repositories {
+        // 关键：使用 ForgeCDN 镜像，它包含完整的 NeoForge 插件仓库
+        maven {
+            name = 'ForgeCDN'
+            url = uri('https://neoforged.forgecdn.net/releases')
+        }
         gradlePluginPortal()
-        maven { url = 'https://maven.neoforged.net/releases' }
     }
-}
-
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+    // 如果 ForgeCDN 镜像完整，通常不需要 resolutionStrategy，
+    // 但如果仍有问题，可以保留它作为保险：
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'net.neoforged.gradle.userdev') {
+                useModule("net.neoforged.gradle:userdev:${requested.version}")
+            }
+        }
+    }
 }
