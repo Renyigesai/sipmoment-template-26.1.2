@@ -14,6 +14,7 @@ public class SMConsumables {
     public static final Consumable BUTTER_BEER;
     public static final Consumable ORANGE_JUICE;
     public static final Consumable SHIPWRECK_VINTAGE;
+    public static final Consumable NUKA_COLA;
 
     static {
 
@@ -22,7 +23,7 @@ public class SMConsumables {
                 .hasConsumeParticles(false)
                 .build();
 
-        DAVID_MARTINEZ = defaultEffectFood(new MobEffectInstance(SMMobEffects.EDGERUNNERS,6000))
+        DAVID_MARTINEZ = defaultEffectFood(new MobEffectInstance(SMMobEffects.EDGERUNNERS,800))
                 .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
                 .hasConsumeParticles(false)
                 .build();
@@ -39,6 +40,12 @@ public class SMConsumables {
 
         SHIPWRECK_VINTAGE = defaultEffectFood(
                 new MobEffectInstance(MobEffects.NAUSEA,600)).onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.WITHER,600)))
+                .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
+                .hasConsumeParticles(false)
+                .build();
+
+        NUKA_COLA = defaultEffectFood(
+                new MobEffectInstance(MobEffects.REGENERATION,300,2)).onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.GLOWING,600)))
                 .animation(ItemUseAnimation.DRINK).sound(SoundEvents.GENERIC_DRINK)
                 .hasConsumeParticles(false)
                 .build();

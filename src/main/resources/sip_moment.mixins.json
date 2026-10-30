@@ -18,6 +18,7 @@
   },
   "client": [
     "EntityRenderDispatcherMixin",
-    "EntityRenderStateMixin"
+    "EntityRenderStateMixin",
+    "LivingEntityRendererMixin"
   ]
 }

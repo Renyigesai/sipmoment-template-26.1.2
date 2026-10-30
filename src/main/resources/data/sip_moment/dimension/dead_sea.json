@@ -1,0 +1,32 @@
+{
+  "type": "sip_moment:dead_sea",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "sip_moment:dead_sea",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        },
+        {
+          "block": "minecraft:stone",
+          "height": 124
+        },
+        {
+          "block": "minecraft:gravel",
+          "height": 2
+        },
+        {
+          "block": "minecraft:water",
+          "height": 1
+        }
+      ],
+      "structure_overrides": [
+        "sip_moment:skeleton"
+      ]
+    }
+  }
+}

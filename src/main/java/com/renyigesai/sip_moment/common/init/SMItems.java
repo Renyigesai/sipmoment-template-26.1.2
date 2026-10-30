@@ -31,6 +31,7 @@ public class SMItems {
     public static final DeferredItem<Item> CHAMPAGNE_CUP;
     public static final DeferredItem<Item> ORANGE_JUICE ;
     public static final DeferredItem<Item> SHIPWRECK_VINTAGE ;
+    public static final DeferredItem<Item> NUKA_COLA ;
     public static final DeferredItem<Item> GOBLET;
     public static final DeferredItem<Item> CHAMPAGNE_GLASS;
     public static final DeferredItem<Item> BAR_TABLE;
@@ -51,12 +52,12 @@ public class SMItems {
         CHAMPAGNE_CUP = wineItem(SMBlocks.CHAMPAGNE_CUP,4,false);
         ORANGE_JUICE = ITEMS.register("orange_juice",()-> new OrangeJuiceItem(SMBlocks.ORANGE_JUICE.get(),new Item.Properties().food(COMMON_WINE_FOOD,SMConsumables.ORANGE_JUICE).setId(modItemId("orange_juice")).useBlockDescriptionPrefix(),4,false,false));
         SHIPWRECK_VINTAGE = wineItem(SMBlocks.SHIPWRECK_VINTAGE,2,SMConsumables.SHIPWRECK_VINTAGE,true);
+        NUKA_COLA = drinkItem(SMBlocks.NUKA_COLA,4,SMConsumables.NUKA_COLA,false);
         GOBLET = ITEMS.register("goblet",()-> new PileItem(SMBlocks.GOBLET.get(),new Item.Properties().setId(modItemId("goblet")).useBlockDescriptionPrefix()));
         CHAMPAGNE_GLASS = ITEMS.register("champagne_glass",()-> new PileItem(SMBlocks.CHAMPAGNE_GLASS.get(),new Item.Properties().setId(modItemId("champagne_glass")).useBlockDescriptionPrefix()));
         BAR_TABLE = block(SMBlocks.BAR_TABLE);
         BAR_CHAIR = block(SMBlocks.BAR_CHAIR);
         MUSIC_DISC_DUST_TO_DUST = ITEMS.register("music_disc_dust_to_dust",MusicDiscDustToDustItem::new);
-
     }
 
     private static DeferredItem<Item> wineItem(Holder<Block> block, int eatCount,Consumable consumable,boolean customField){

@@ -86,15 +86,17 @@ public class EdgerunnersMobEffect extends MobEffect {
             if (attacker instanceof LivingEntity livingEntity && livingEntity.hasEffect(SMMobEffects.EDGERUNNERS)){
                 RandomSource random = entity.getRandom();
                 if (random.nextDouble() < 0.1){
-                    if (livingEntity.hasEffect(SMMobEffects.FURIOUS)){
-                        int level = livingEntity.getEffect(SMMobEffects.FURIOUS).getAmplifier();
-                        if (level + 1 <= 2){
-                            level ++;
+                    if (!livingEntity.level().isClientSide()){
+                        if (livingEntity.hasEffect(SMMobEffects.FURIOUS)){
+                            int level = livingEntity.getEffect(SMMobEffects.FURIOUS).getAmplifier();
+                            if (level + 1 <= 2){
+                                level ++;
+                            }
+                            livingEntity.removeEffect(SMMobEffects.FURIOUS);
+                            livingEntity.addEffect(new MobEffectInstance(SMMobEffects.FURIOUS,240,level));
+                        }else {
+                            livingEntity.addEffect(new MobEffectInstance(SMMobEffects.FURIOUS,240));
                         }
-                        livingEntity.removeEffect(SMMobEffects.FURIOUS);
-                        livingEntity.addEffect(new MobEffectInstance(SMMobEffects.FURIOUS,240,level));
-                    }else {
-                        livingEntity.addEffect(new MobEffectInstance(SMMobEffects.FURIOUS,240));
                     }
                 }
             }

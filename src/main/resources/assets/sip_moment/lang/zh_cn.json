@@ -13,6 +13,7 @@
   "block.sip_moment.champagne_glass": "香槟杯",
   "block.sip_moment.orange_juice": "橙汁",
   "block.sip_moment.shipwreck_vintage": "沉船古酒",
+  "block.sip_moment.nuka_cola": "核子可乐",
   "block.sip_moment.bar_table": "酒桌",
   "block.sip_moment.bar_chair": "酒吧椅",
   "item.sip_moment.example_item": "Example Item",
@@ -36,6 +37,7 @@
   "tooltip.sip_moment.player_capacity_for_liquor": "你的酒量为 ",
   "tooltip.sip_moment.take_effect": "当生效时：",
   "tooltip.sip_moment:shipwreck_vintage": "这是计划的一部分。",
+  "tooltip.sip_moment:nuka_cola": "",
   "container.bakeries.wine_list": "酒单",
   "advancements.sip_moment.root.title": "小酌一刻",
   "advancements.sip_moment.root.descr": "这一杯，这一刻，让心相连。",
@@ -51,6 +53,8 @@
   "advancements.sip_moment.drunk.descr": "获得酒劲药水效果。",
   "advancements.sip_moment.get_shipwreck_vintage.title": "天籁般的滋味",
   "advancements.sip_moment.get_shipwreck_vintage.descr": "获得沉船古酒。",
+  "advancements.sip_moment.hey_jude.title": "Hey Jude",
+  "advancements.sip_moment.hey_jude.descr": "造访死海。",
   "jukebox_song.sip_moment.dust_to_dust": "KING_VITIONNOT - Dust To Dust",
   "death.attack.at_field": "%1$s 融成了LCL"
 }

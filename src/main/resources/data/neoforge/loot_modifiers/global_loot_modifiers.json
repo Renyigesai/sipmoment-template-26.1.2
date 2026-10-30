@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "entries": [
+    "sip_moment:add_shipwreck_supply",
+
+    "sip_moment:add_desert_pyramid",
+    "sip_moment:add_desert_well",
+    "sip_moment:add_ocean_ruin_warm",
+    "sip_moment:add_ocean_ruin_cold",
+    "sip_moment:add_trail_ruins_common",
+    "sip_moment:add_trail_ruins_rare"
+  ]
+}

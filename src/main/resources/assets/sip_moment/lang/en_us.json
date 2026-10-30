@@ -15,6 +15,7 @@
   "block.sip_moment.bar_table": "Bar Table",
   "block.sip_moment.bar_chair": "Bar Chair",
   "block.sip_moment.shipwreck_vintage": "Shipwreck Vintage",
+  "block.sip_moment.nuka_cola": "Nuka Cola",
   "item.sip_moment.example_item": "Example Item",
   "item_group.sip_moment.main_tab": "Sip Moment",
   "item.sip_moment.music_disc_dust_to_dust": "Music Disc",
@@ -36,6 +37,7 @@
   "tooltip.sip_moment.player_capacity_for_liquor": "Your drinking capacity ",
   "tooltip.sip_moment.take_effect": "When it takes effect:",
   "tooltip.sip_moment:shipwreck_vintage": "This is part of the plan.",
+  "tooltip.sip_moment:nuka_cola": "",
   "container.bakeries.wine_list": "Wine List",
   "advancements.sip_moment.root.title": "Sip Moment",
   "advancements.sip_moment.root.descr": "This drink, this moment, connects our hearts.",
@@ -51,6 +53,8 @@
   "advancements.sip_moment.drunk.descr": "get Drunk Effect.",
   "advancements.sip_moment.get_shipwreck_vintage.title": "The heavenly-like flavor",
   "advancements.sip_moment.get_shipwreck_vintage.descr": "get Shipwreck Vintage.",
+  "advancements.sip_moment.hey_jude.title": "Hey Jude",
+  "advancements.sip_moment.hey_jude.descr": "Arrive at the Dead Sea.",
   "jukebox_song.sip_moment.dust_to_dust": "KING_VITIONNOT - Dust To Dust",
   "death.attack.at_field": "%1$s Melted into LCL"
 }

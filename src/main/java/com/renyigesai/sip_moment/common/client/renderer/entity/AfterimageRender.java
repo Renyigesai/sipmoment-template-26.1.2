@@ -13,7 +13,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 
 public class AfterimageRender extends HumanoidMobRenderer<AfterimageEntity, AfterimageRenderState, AfterimageModel<AfterimageRenderState>> {
-    private static final Identifier LOCATION = Identifier.fromNamespaceAndPath(SipMomentMod.MODID,"textures/entity/afterimage.png");
+    private static final Identifier LOCATION = Identifier.fromNamespaceAndPath(SipMomentMod.MODID,"textures/entity/light.png");
 
     private static final int[] COLORS = {
             0x6BFF8C,
